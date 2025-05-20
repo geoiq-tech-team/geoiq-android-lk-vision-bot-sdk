@@ -193,39 +193,19 @@ afterEvaluate {
         }
     }
 }
+
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("release") {
-                from (components["release"])
-                
-                groupId = 'com.geoiq'
-                artifactId = 'geoiq-lk'
-                version = '1.0.0'
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
 
-                pom {
-                    name.set("GeoIQ Vision")
-                    description.set("A Vision Android SDK built in Kotlin.")
-                    url.set("https://github.com/geoiq-tech-team/geoiq-lk-sdk")
-                    licenses {
-                        license {
-                            name.set("Apache License 2.0")
-                            url.set("https://www.apache.org/licenses/LICENSE-2.0.html")
-                        }
-                    }
-                    developers {
-                        developer {
-                            id.set("geoiq-tech-team")
-                            name.set("GeoIQ Tech Team")
-                            email.set("tech-team@geoiq.io")
-                        }
-                    }
-                    scm {
-                        connection.set("scm:git:git://github.com/geoiq-tech-team/geoiq-lk-sdk.git")
-                        developerConnection.set("scm:git:ssh://github.com:geoiq-tech-team/geoiq-lk-sdk.git")
-                        url.set("https://github.com/geoiq-tech-team/geoiq-lk-sdk")
-                    }
-                }
+                // You can then customize attributes of the publication as shown below.
+                groupId = GROUP
+                artifactId = POM_ARTIFACT_ID
+                version = VERSION_NAME
             }
         }
     }

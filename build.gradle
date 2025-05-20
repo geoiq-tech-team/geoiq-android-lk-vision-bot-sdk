@@ -103,4 +103,42 @@ afterEvaluate {
                 getTasksByName(taskName, false).forEach { task -> task.enabled = false }
             }
     }
+
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from (components["release"])
+
+                groupId = 'com.geoiq'
+                artifactId = 'geoiq-lk'
+                version = '1.0.0'
+
+                pom {
+                    name.set("GeoIQ Vision")
+                    description.set("A Vision Android SDK built in Kotlin.")
+                    url.set("https://github.com/geoiq-tech-team/geoiq-android-lk-vision-bot-sdk")
+                    licenses {
+                        license {
+                            name.set("Apache License 2.0")
+                            url.set("https://www.apache.org/licenses/LICENSE-2.0.html")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("geoiq-tech-team")
+                            name.set("GeoIQ Tech Team")
+                            email.set("tech-team@geoiq.io")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:git://github.com/geoiq-tech-team/geoiq-android-lk-vision-bot-sdk.git")
+                        developerConnection.set("scm:git:ssh://github.com/geoiq-tech-team/geoiq-android-lk-vision-bot-sdk.git")
+                        url.set("https://github.com/geoiq-tech-team/geoiq-lk-sdk")
+                    }
+                }
+            }
+        }
+    }
+
 }
+
