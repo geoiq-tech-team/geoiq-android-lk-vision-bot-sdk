@@ -197,7 +197,7 @@ afterEvaluate {
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("release") {
+            release(MavenPublication) {
                 from (components["release"])
 
                 groupId = 'com.geoiq'
